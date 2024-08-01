@@ -1,0 +1,148 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Apache StreamPark Open API",
+    "description": "Apache StreamPark Open API for third-party system integration",
+    "contact": {
+      "name": "Apache StreamPark",
+      "url": "https://streampark.apache.org/",
+      "email": "dev@streampark.apache.org"
+    },
+    "license": {
+      "name": "Apache-2.0 license"
+    },
+    "version": "2.1.4"
+  },
+  "servers": [
+    {
+      "url": "http://192.168.231.151:10000",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/flink/app/start": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Start application",
+        "operationId": "start",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Access authorization token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "start app id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "teamId",
+            "in": "query",
+            "description": "current user teamId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "savePointed",
+            "in": "query",
+            "description": "restored app from the savepoint or latest checkpoint",
+            "schema": {
+              "type": "boolean"
+            },
+            "example": false
+          },
+          {
+            "name": "savePoint",
+            "in": "query",
+            "description": "savepoint or checkpoint path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "allowNonRestored",
+            "in": "query",
+            "description": "ignore savepoint if cannot be restored",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RestResponse": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}
