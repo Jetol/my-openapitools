@@ -1,0 +1,1575 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Apache StreamPark Open API",
+    "description": "Apache StreamPark Open API for third-party system integration",
+    "contact": {
+      "name": "Apache StreamPark",
+      "url": "https://streampark.apache.org/",
+      "email": "dev@streampark.apache.org"
+    },
+    "license": {
+      "name": "Apache-2.0 license"
+    },
+    "version": "2.1.4"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:10000",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "Authorization": []
+    }
+  ],
+  "paths": {
+    "/flink/sql/verify": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "SQL verify",
+        "operationId": "verify",
+        "parameters": [
+          {
+            "name": "sql",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "teamId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/pipe/detail": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Get application release pipeline",
+        "operationId": "getBuildProgressDetail",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/pipe/build": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Release application",
+        "operationId": "buildApplication",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "query",
+            "description": "app id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "forceBuild",
+            "in": "query",
+            "description": "force build",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "example": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/upload": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "upload jar",
+        "operationId": "upload",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/update": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Update application",
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Application"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/start": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Start application",
+        "operationId": "start",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Access authorization token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "start app id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "teamId",
+            "in": "query",
+            "description": "current user teamId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "savePointed",
+            "in": "query",
+            "description": "restored app from the savepoint or latest checkpoint",
+            "schema": {
+              "type": "boolean"
+            },
+            "example": false
+          },
+          {
+            "name": "savePoint",
+            "in": "query",
+            "description": "savepoint or checkpoint path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "allowNonRestored",
+            "in": "query",
+            "description": "ignore savepoint if cannot be restored",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/list": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "List applications",
+        "operationId": "list",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Application"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 10
+            }
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "e.g. create_time"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/k8sStartLog": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "k8sStartLog application",
+        "operationId": "k8sStartLog",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "app id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "number of log lines offset",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "number of log lines loaded at once",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/get": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Get application",
+        "operationId": "get",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Application"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/forcedStop": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Cancel application",
+        "operationId": "forcedStop",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Application"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/create": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Create application",
+        "operationId": "create",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Application"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/copy": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Copy application",
+        "operationId": "copy",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "copied target app id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "jobName",
+            "in": "query",
+            "description": "new application name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "copy-app"
+          },
+          {
+            "name": "args",
+            "in": "query",
+            "description": "new application args",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/check_start": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "checkStart application",
+        "operationId": "checkStart",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Application"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/checkName": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "checkName application",
+        "operationId": "checkName",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Application"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flink/app/cancel": {
+      "post": {
+        "tags": [
+          "OpenAPI"
+        ],
+        "summary": "Cancel application",
+        "operationId": "cancel",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Access authorization token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "cancel app id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "teamId",
+            "in": "query",
+            "description": "current user teamId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 100000
+          },
+          {
+            "name": "savePointed",
+            "in": "query",
+            "description": "trigger savepoint before taking stopping",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "savePoint",
+            "in": "query",
+            "description": "savepoint path",
+            "schema": {
+              "type": "string"
+            },
+            "example": "hdfs:///savepoint/100000"
+          },
+          {
+            "name": "drain",
+            "in": "query",
+            "description": "send max watermark before canceling",
+            "schema": {
+              "type": "boolean"
+            },
+            "example": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RestResponse": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
+      },
+      "AppControl": {
+        "type": "object",
+        "properties": {
+          "allowStart": {
+            "type": "boolean"
+          },
+          "allowStop": {
+            "type": "boolean"
+          },
+          "allowBuild": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Application": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "teamId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "jobType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "jobName": {
+            "type": "string"
+          },
+          "jobId": {
+            "type": "string"
+          },
+          "jobManagerUrl": {
+            "type": "string"
+          },
+          "versionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "clusterId": {
+            "type": "string"
+          },
+          "flinkImage": {
+            "type": "string"
+          },
+          "k8sNamespace": {
+            "type": "string"
+          },
+          "state": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "release": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "build": {
+            "type": "boolean"
+          },
+          "restartSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "restartCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "optionState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alertId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "args": {
+            "type": "string"
+          },
+          "module": {
+            "type": "string"
+          },
+          "options": {
+            "type": "string"
+          },
+          "hotParams": {
+            "type": "string"
+          },
+          "resolveOrder": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "executionMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dynamicProperties": {
+            "type": "string"
+          },
+          "appType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tracking": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jar": {
+            "type": "string"
+          },
+          "jarCheckSum": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "mainClass": {
+            "type": "string"
+          },
+          "dependency": {
+            "type": "string"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "cpMaxFailureInterval": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cpFailureRateInterval": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cpFailureAction": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalTM": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalSlot": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "availableSlot": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jmMemory": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tmMemory": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalTask": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "flinkClusterId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "optionTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifyTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "k8sRestExposedType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "k8sPodTemplate": {
+            "type": "string"
+          },
+          "k8sJmPodTemplate": {
+            "type": "string"
+          },
+          "k8sTmPodTemplate": {
+            "type": "string"
+          },
+          "ingressTemplate": {
+            "type": "string"
+          },
+          "defaultModeIngress": {
+            "type": "string"
+          },
+          "resourceFrom": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "k8sHadoopIntegration": {
+            "type": "boolean"
+          },
+          "tags": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "overview": {
+            "$ref": "#/components/schemas/Task"
+          },
+          "sqlId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "flinkSql": {
+            "type": "string"
+          },
+          "stateArray": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "jobTypeArray": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "backUp": {
+            "type": "boolean"
+          },
+          "restart": {
+            "type": "boolean"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "nickName": {
+            "type": "string"
+          },
+          "config": {
+            "type": "string"
+          },
+          "configId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "flinkVersion": {
+            "type": "string"
+          },
+          "confPath": {
+            "type": "string"
+          },
+          "format": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "savePoint": {
+            "type": "string"
+          },
+          "savePointed": {
+            "type": "boolean"
+          },
+          "drain": {
+            "type": "boolean"
+          },
+          "savePointTimeout": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "allowNonRestored": {
+            "type": "boolean"
+          },
+          "socketId": {
+            "type": "string"
+          },
+          "projectName": {
+            "type": "string"
+          },
+          "createTimeFrom": {
+            "type": "string"
+          },
+          "createTimeTo": {
+            "type": "string"
+          },
+          "backUpDescription": {
+            "type": "string"
+          },
+          "yarnQueue": {
+            "type": "string"
+          },
+          "serviceAccount": {
+            "type": "string"
+          },
+          "flinkRestUrl": {
+            "type": "string"
+          },
+          "buildStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appControl": {
+            "$ref": "#/components/schemas/AppControl"
+          },
+          "k8sPodTemplates": {
+            "$ref": "#/components/schemas/K8sPodTemplates"
+          },
+          "streamParkJob": {
+            "type": "boolean"
+          },
+          "kubernetesModeJob": {
+            "type": "boolean"
+          },
+          "canBeStart": {
+            "type": "boolean"
+          }
+        }
+      },
+      "K8sPodTemplates": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "scheduled": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "deploying": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "running": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "finished": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "canceling": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "canceled": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "failed": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reconciling": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Authorization": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}
