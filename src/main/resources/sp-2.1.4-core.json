@@ -1162,8 +1162,18 @@
       "RestResponse": {
         "type": "object",
         "properties": {
-          "empty": {
-            "type": "boolean"
+          "code": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
           }
         },
         "additionalProperties": {
