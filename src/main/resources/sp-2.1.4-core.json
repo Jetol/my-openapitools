@@ -1161,21 +1161,7 @@
     "schemas": {
       "RestResponse": {
         "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "status": {
-            "type": "string"
-          },
-          "data": {
-            "type": "object"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
+
         "additionalProperties": {
           "type": "object"
         }
